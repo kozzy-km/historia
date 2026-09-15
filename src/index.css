@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", ui-serif, Georgia, serif;
+
+  --color-paper: #f7f5f0;
+  --color-paper-2: #efece4;
+  --color-ink: #14213d;
+  --color-ink-2: #3b4661;
+  --color-muted: #6b7280;
+
+  --color-cel-50: #eef6fc;
+  --color-cel-100: #d9ebf8;
+  --color-cel-200: #b5d7f1;
+  --color-cel-300: #86bce6;
+  --color-cel-400: #5aa0d8;
+  --color-cel-500: #3383c4;
+  --color-cel-600: #1f6aa8;
+  --color-cel-700: #1a5688;
+  --color-cel-800: #17456b;
+  --color-cel-900: #143a59;
+
+  --color-sun-100: #fdf1cf;
+  --color-sun-200: #fae1a0;
+  --color-sun-400: #eab53a;
+  --color-sun-500: #d99a13;
+  --color-sun-600: #b57d0c;
+
+  --color-rose-ink: #b23a48;
+  --color-leaf: #2f855a;
+
+  --shadow-soft: 0 1px 2px rgba(20, 33, 61, 0.04), 0 8px 24px -8px rgba(20, 33, 61, 0.12);
+  --shadow-lift: 0 2px 4px rgba(20, 33, 61, 0.05), 0 20px 40px -12px rgba(20, 33, 61, 0.18);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink font-sans antialiased;
+  font-feature-settings: "cv11", "ss01", "ss03";
+}
+
+::selection {
+  background: var(--color-sun-200);
+  color: var(--color-ink);
+}
+
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.card {
+  @apply rounded-2xl border border-ink/8 bg-white;
+  box-shadow: var(--shadow-soft);
+}
+
+.card-lift {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s;
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+}
+
+.eyebrow {
+  @apply inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-cel-600;
+}
+
+.h-display {
+  @apply font-serif font-semibold tracking-tight text-ink;
+}
+
+.prose-study p {
+  @apply text-[15.5px] leading-relaxed text-ink-2;
+}
+
+.kbd {
+  @apply inline-flex h-6 min-w-6 items-center justify-center rounded-md border border-ink/10 bg-paper px-1.5 font-mono text-[11px] font-semibold text-ink-2;
+}
+
+.hl {
+  background: linear-gradient(transparent 55%, var(--color-sun-200) 55%);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.grid-dots {
+  background-image: radial-gradient(rgba(20, 33, 61, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.perspective {
+  perspective: 1400px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+@keyframes sun-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.sun-spin {
+  animation: sun-spin 60s linear infinite;
+}
